@@ -1,0 +1,1603 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>FindUs</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: HomeSpace
+  * Template URL: https://bootstrapmade.com/homespace-bootstrap-real-estate-template/
+  * Updated: Jul 05 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<style>
+
+     /* Dashboard Tabs Styles - Updated for <a> tags */
+.dashboard-tabs {
+    display: flex;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.dashboard-tabs .tab {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: block; /* Important for proper spacing */
+}
+
+.craftsman-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+/* Reviews Section Styles */
+.rating-summary {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.rating-distribution .progress {
+    background-color: #e9ecef;
+}
+
+.distribution-item {
+    font-size: 0.875rem;
+}
+
+.rating-selection .form-check {
+    margin-right: 1rem !important;
+}
+
+.rating-selection .form-check-label {
+    font-size: 0.9rem;
+}
+
+.review-item {
+    padding-bottom: 1.5rem;
+}
+
+.reviewer-avatar {
+    flex-shrink: 0;
+}
+
+.review-title {
+    font-weight: 600;
+}
+
+.review-comment {
+    line-height: 1.5;
+}
+
+.stars {
+    color: #ffc107;
+}
+
+.stars.text-muted {
+    color: #e9ecef !important;
+}
+
+/* Collapse animation */
+.collapse {
+    transition: all 0.3s ease;
+}
+
+/* Responsive design for reviews */
+@media (max-width: 768px) {
+    .rating-selection .form-check {
+        display: block;
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .review-item {
+        padding-bottom: 1rem;
+    }
+}
+
+.verified-badge {
+    bottom: 5px;
+    right: -5px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.sticky-top {
+    position: sticky;
+    z-index: 10;
+}
+
+.service-gallery .main-image {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-thumbnails img {
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.image-thumbnails img:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+}
+
+/* Service Detail Page Styles */
+.service-details-card {
+    border-radius: 12px;
+}
+
+.craftsman-card, .booking-card {
+    border-radius: 12px;
+}
+
+.verified-badge {
+    bottom: 5px;
+    right: -5px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.service-gallery .main-image {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-thumbnails img {
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.image-thumbnails img:hover {
+    transform: scale(1.05);
+    border-color: #077f46;
+}
+
+.image-thumbnails img.active {
+    border-color: #077f46;
+}
+
+.spec-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item {
+    padding: 4px 0;
+}
+
+.action-buttons .btn {
+    padding: 12px;
+    font-weight: 500;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: #077f46;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+.related-services .card {
+    transition: transform 0.3s ease;
+}
+
+.related-services .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-price {
+        font-size: 1.5rem !important;
+    }
+    
+    .craftsman-card {
+        position: static !important;
+    }
+}
+
+.spec-item {
+    padding: 8px 0;
+}
+
+.contact-item {
+    padding: 4px 0;
+}
+
+.action-buttons .btn {
+    padding: 10px;
+}
+
+.dashboard-tabs .tab i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.dashboard-tabs .tab.active {
+    color: #077f46;
+    border-bottom: 3px solid #077f46;
+    background-color: #e6f5ec;
+}
+
+.service-details-card {
+    border-radius: 12px;
+}
+
+.craftsman-card, .booking-card, .safety-tips {
+    border-radius: 12px;
+}
+
+.verified-badge {
+    bottom: 5px;
+    right: -5px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.service-gallery .main-image {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-thumbnails img {
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.image-thumbnails img:hover {
+    transform: scale(1.05);
+    border-color: #077f46;
+}
+
+.image-thumbnails img.active {
+    border-color: #077f46;
+}
+
+.spec-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item {
+    padding: 4px 0;
+}
+
+.action-buttons .btn {
+    padding: 12px;
+    font-weight: 500;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: #077f46;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+.related-services .card {
+    transition: transform 0.3s ease;
+}
+
+.related-services .card:hover {
+    transform: translateY(-5px);
+}
+
+.service-stats {
+    border: 1px solid #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-price {
+        font-size: 1.5rem !important;
+    }
+    
+    .craftsman-card {
+        position: static !important;
+    }
+    
+    .sticky-top {
+        position: static !important;
+    }
+}
+
+.dashboard-tabs .tab:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+/* Service meta badges */
+.service-meta {
+    margin: 10px 0;
+}
+
+.service-meta .badge {
+    margin-right: 5px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+}
+
+/* Service features tags */
+.service-features {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.feature-tag {
+    background: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+/* Service description */
+.service-description {
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+/* Agent details enhancements */
+.agent-details small {
+    display: block;
+    margin-top: 2px;
+}
+
+/* Service actions */
+.service-actions .btn {
+    font-size: 0.875rem;
+}
+
+/* Improved sticky sidebar behavior */
+.sticky-top {
+    position: sticky;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 991px) {
+    .sticky-top {
+        position: static;
+    }
+    
+    .col-lg-4 {
+        margin-top: 2rem;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent content jump */
+.sticky-top {
+    will-change: transform;
+}
+
+/* Better card spacing */
+.craftsman-card,
+.booking-card,
+.safety-tips {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.booking-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-left: 4px solid #077f46;
+}
+
+.safety-tips {
+    background: #fff9e6;
+    border-left: 4px solid #ffc107;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-meta .badge {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+    
+    .feature-tag {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+    
+    .service-actions .btn {
+        font-size: 0.8rem;
+    }
+}
+
+/* Share Modal Styles */
+.share-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.share-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.share-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.share-icon.facebook {
+    background: linear-gradient(135deg, #1877F2, #0D5FD6);
+}
+
+.share-icon.twitter {
+    background: linear-gradient(135deg, #1DA1F2, #0D8BD9);
+}
+
+.share-icon.instagram {
+    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4, #5851DB, #405DE6);
+}
+
+.share-icon.link {
+    background: linear-gradient(135deg, #077f46, #066b3a);
+}
+
+.share-option span {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.share-link-container {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1.5rem;
+}
+
+/* Share button in property actions */
+.property-actions .share-btn:hover {
+    background: #1DA1F2;
+    color: white;
+}
+
+/* Responsive design for share modal */
+@media (max-width: 576px) {
+    .share-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .share-option {
+        flex-direction: row;
+        text-align: left;
+        padding: 1rem;
+    }
+    
+    .share-icon {
+        margin-bottom: 0;
+        margin-right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+/* Hover effects */
+.property-item:hover .service-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-actions {
+    opacity: 0.9;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design - Unchanged */
+@media (max-width: 768px) {
+    .dashboard-tabs {
+        flex-direction: column;
+    }
+    
+    .dashboard-tabs .tab {
+        padding: 12px;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        text-align: left;
+        padding-left: 20px;
+    }
+    
+    .dashboard-tabs .tab.active {
+        border-bottom: none;
+        border-right: 3px solid #077f46;
+    }
+}
+
+.service-details-card {
+    border-radius: 12px;
+}
+
+.craftsman-card, .booking-card, .safety-tips {
+    border-radius: 12px;
+}
+
+.verified-badge {
+    bottom: 5px;
+    right: -5px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.service-gallery .main-image {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-thumbnails img {
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.image-thumbnails img:hover {
+    transform: scale(1.05);
+    border-color: #077f46;
+}
+
+.image-thumbnails img.active {
+    border-color: #077f46;
+}
+
+.spec-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item {
+    padding: 4px 0;
+}
+
+.action-buttons .btn {
+    padding: 12px;
+    font-weight: 500;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: #077f46;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+.related-services .card {
+    transition: transform 0.3s ease;
+}
+
+.related-services .card:hover {
+    transform: translateY(-5px);
+}
+
+.service-stats {
+    border: 1px solid #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-price {
+        font-size: 1.5rem !important;
+    }
+    
+    .craftsman-card {
+        position: static !important;
+    }
+    
+    .sticky-top {
+        position: static !important;
+    }
+}
+
+</style>
+
+<body class="properties-page">
+
+  
+
+  <main class="main">
+    <div class="dashboard-tabs">
+        <a href="{% url 'customer_profile' %}" class="tab active">
+            <i class="bi bi-person-circle"></i> My Profile
+        </a>
+        
+        <a href="{% url 'customer_dashboard' %}" class="tab">
+            <i class="bi bi-tools"></i> Services
+        </a>
+        
+        <a href="{% url 'saved_services' %}" class="tab">
+            <i class="bi bi-rocket"></i> Saved Services
+        </a>
+    </div>
+
+    
+
+
+    <div class="container py-5">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'customer_dashboard' %}">All Services</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'customer_dashboard' %}?category={{ service.category }}">{{ service.get_category_display }}</a></li>
+                <li class="breadcrumb-item active">{{ service.title }}</li>
+            </ol>
+        </nav>
+    
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Service Images -->
+                <div class="service-gallery mb-4">
+                    <div class="main-image mb-3">
+                        {% if service.image %}
+                            <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid rounded-3 w-100" style="max-height: 500px; object-fit: cover;" id="mainImage">
+                        {% else %}
+                            <img src="{% static 'assets/img/default-service.jpg' %}" alt="{{ service.title }}" class="img-fluid rounded-3 w-100" style="max-height: 500px; object-fit: cover;" id="mainImage">
+                        {% endif %}
+                    </div>
+                    
+                    <!-- If you have additional images in the future, you can add thumbnail gallery here -->
+                    <!--
+                    <div class="image-thumbnails">
+                        <div class="row g-2">
+                            <div class="col-3">
+                                <img src="{{ service.image.url }}" alt="Service image" class="img-fluid rounded-2 thumbnail" style="height: 80px; object-fit: cover; cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+    
+                <!-- Service Details -->
+                <div class="service-details-card card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h1 class="h3 mb-2">{{ service.title }}</h1>
+                                <div class="service-meta mb-3">
+                                    <span class="badge bg-primary me-2">{{ service.get_category_display }}</span>
+                                    <span class="badge bg-success">{{ service.get_availability_display }}</span>
+                                    <span class="badge bg-info">{{ service.get_job_size_display }}</span>
+                                    {% if service.materials_included %}
+                                        <span class="badge bg-warning">Materials Included</span>
+                                    {% endif %}
+                                    <span class="badge bg-secondary">{{ service.get_price_type_display }}</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="service-price h4 text-primary mb-1">
+                                    {% if service.price_type == 'hourly' %}
+                                        ${{ service.hourly_rate }}<small class="text-muted">/hour</small>
+                                    {% else %}
+                                        ${{ service.fixed_price }}<small class="text-muted"> fixed rate</small>
+                                    {% endif %}
+                                </div>
+                                {% if service.travel_fee %}
+                                    <small class="text-muted">+ ${{ service.travel_fee }} travel fee</small>
+                                {% endif %}
+                            </div>
+                        </div>
+    
+                        <!-- Service Description -->
+                        <div class="service-description mb-4">
+                            <h5 class="mb-3">Service Description</h5>
+                            <p class="text-muted lead">{{ service.description|linebreaks }}</p>
+                        </div>
+    
+                        <!-- Service Features -->
+                        {% if service.features %}
+                        <div class="service-features mb-4">
+                            <h5 class="mb-3">Service Features</h5>
+                            <div class="row">
+                                {% for feature in service.features %}
+                                <div class="col-md-6 mb-2">
+                                    <i class="bi bi-check-circle text-success me-2"></i>
+                                    {{ feature }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+    
+                        <!-- Service Specifications -->
+                        <div class="service-specs mb-4">
+                            <h5 class="mb-3">Service Details</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-clock text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Estimated Duration</strong>
+                                            <p class="mb-0 text-muted">{{ service.estimated_duration }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-calendar-check text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Availability</strong>
+                                            <p class="mb-0 text-muted">{{ service.get_availability_display }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-briefcase text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Job Size</strong>
+                                            <p class="mb-0 text-muted">{{ service.get_job_size_display }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    {% if service.price_type == 'hourly' and service.min_hours %}
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-hourglass-split text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Minimum Hours</strong>
+                                            <p class="mb-0 text-muted">{{ service.min_hours }} hours</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-cash text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Price Type</strong>
+                                            <p class="mb-0 text-muted">{{ service.get_price_type_display }}</p>
+                                        </div>
+                                    </div>
+                                    {% if service.travel_fee %}
+                                    <div class="spec-item d-flex align-items-center mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-3 fs-5"></i>
+                                        <div>
+                                            <strong>Travel Fee</strong>
+                                            <p class="mb-0 text-muted">${{ service.travel_fee }}</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Service Stats -->
+                        <div class="service-stats row text-center bg-light rounded-3 py-3">
+                            <div class="col-4">
+                                <div class="h5 text-primary mb-1">{{ service.craftsman.rating|default:"4.5" }}</div>
+                                <small class="text-muted">Rating</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 text-primary mb-1">{{ service.bookings_count|default:"0" }}</div>
+                                <small class="text-muted">Bookings</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 text-primary mb-1">{{ service.review_count|default:"0" }}</div>
+                                <small class="text-muted">Reviews</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Reviews Section -->
+<div class="reviews-section card border-0 shadow-sm mt-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="card-title mb-0">Customer Reviews</h5>
+            <div class="rating-summary">
+                <div class="d-flex align-items-center">
+                    <div class="average-rating me-3">
+                        <div class="h2 text-primary mb-0">{{ avg_rating|floatformat:1 }}</div>
+                        <div class="stars small">
+                            {% for i in "12345" %}
+                                <i class="bi bi-star{% if i|add:0 <= avg_rating %}fill text-warning{% else %}-text-muted{% endif %}"></i>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="review-count">
+                        <small class="text-muted">{{ review_count }} review{{ review_count|pluralize }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating Distribution -->
+        {% if review_count > 0 %}
+        <div class="rating-distribution mb-4">
+            <h6 class="mb-3">Rating Breakdown</h6>
+            {% for rating in "54321" %}
+            <div class="distribution-item d-flex align-items-center mb-2">
+                <small class="text-nowrap me-2" style="width: 70px;">
+                    {{ rating }} star{{ rating|pluralize }}
+                </small>
+                <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                    <div class="progress-bar bg-warning" 
+                         style="width: {{ rating_distribution|get_item:rating|floatformat:0 }}%"></div>
+                </div>
+                <small class="text-muted text-nowrap" style="width: 40px;">
+                    {{ rating_distribution|get_item:rating|floatformat:0 }}%
+                </small>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Write Review Button -->
+        {% if not user_has_reviewed and request.user.userprofile.customerprofile %}
+        <div class="write-review-section mb-4">
+            <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#reviewForm">
+                <i class="bi bi-pencil me-2"></i>Write a Review
+            </button>
+            
+            <!-- Review Form -->
+            <div class="collapse mt-3" id="reviewForm">
+                <div class="card card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="submit_review" value="true">
+                        
+                        <!-- Rating Selection -->
+                        <div class="mb-3">
+                            <label class="form-label">Your Rating *</label>
+                            <div class="rating-selection">
+                                {% for choice in review_form.rating %}
+                                <div class="form-check form-check-inline">
+                                    {{ choice.tag }}
+                                    <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                        {{ choice.choice_label }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% if review_form.rating.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ review_form.rating.errors.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Review Title -->
+                        <div class="mb-3">
+                            <label for="{{ review_form.title.id_for_label }}" class="form-label">Review Title *</label>
+                            {{ review_form.title }}
+                            {% if review_form.title.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ review_form.title.errors.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Review Comment -->
+                        <div class="mb-3">
+                            <label for="{{ review_form.comment.id_for_label }}" class="form-label">Your Review *</label>
+                            {{ review_form.comment }}
+                            {% if review_form.comment.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ review_form.comment.errors.0 }}
+                            </div>
+                            {% endif %}
+                            <div class="form-text">
+                                Share details about your experience with this service
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#reviewForm">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% elif user_has_reviewed %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>You have already reviewed this service.
+        </div>
+        {% elif not request.user.is_authenticated %}
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle me-2"></i>Please <a href="{% url 'signin' %}">sign in</a> to leave a review.
+        </div>
+        {% endif %}
+
+        <!-- Reviews List -->
+        <div class="reviews-list">
+            {% if reviews %}
+                {% for review in reviews %}
+                <div class="review-item border-bottom pb-4 mb-4 {% if forloop.last %}border-bottom-0 mb-0{% endif %}">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="reviewer-avatar me-3">
+                                {% if review.customer.user_profile.profile_picture %}
+                                    <img src="{{ review.customer.user_profile.profile_picture.url }}" 
+                                         alt="{{ review.customer.user_profile.user.get_full_name }}" 
+                                         class="rounded-circle" width="40" height="40" style="object-fit: cover;">
+                                {% else %}
+                                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" 
+                                         style="width: 40px; height: 40px;">
+                                        <i class="bi bi-person text-muted"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h6 class="mb-0">{{ review.customer.user_profile.user.get_full_name }}</h6>
+                                <div class="stars small">
+                                    {% for i in "12345" %}
+                                        <i class="bi bi-star{% if i|add:0 <= review.rating %}fill text-warning{% else %}-text-muted{% endif %}"></i>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">{{ review.created_at|date:"M j, Y" }}</small>
+                    </div>
+                    
+                    <h6 class="review-title text-primary mb-2">{{ review.title }}</h6>
+                    <p class="review-comment text-muted mb-2">{{ review.comment|linebreaks }}</p>
+                    
+                    {% if review.is_verified %}
+                    <small class="text-success">
+                        <i class="bi bi-patch-check-fill me-1"></i>Verified Customer
+                    </small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-chat-square-text display-4 text-muted"></i>
+                    <p class="text-muted mt-3">No reviews yet. Be the first to review this service!</p>
+                    {% if not user_has_reviewed and request.user.userprofile.customerprofile %}
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reviewForm">
+                        Write the First Review
+                    </button>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Load More Reviews (if many reviews) -->
+        {% if review_count > 5 %}
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-secondary">Load More Reviews</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+            </div>
+    
+            <!-- Sidebar -->
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Craftsman Profile Card - NO STICKY -->
+                <div class="craftsman-card card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <div class="craftsman-avatar mx-auto mb-3 position-relative">
+                                {% if service.craftsman.profile_photo %}
+                                    <img src="{{ service.craftsman.profile_photo.url }}" alt="{{ service.craftsman.business_name }}" class="rounded-circle" width="80" height="80" style="object-fit: cover;">
+                                {% else %}
+                                    <img src="{% static 'assets/img/default-avatar.jpg' %}" alt="Default avatar" class="rounded-circle" width="80" height="80" style="object-fit: cover;">
+                                {% endif %}
+                                {% if service.craftsman.is_verified %}
+                                    <span class="verified-badge position-absolute">
+                                        <i class="bi bi-patch-check-fill text-primary"></i>
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <h5 class="mb-1">{{ service.craftsman.business_name }}</h5>
+                            <p class="text-muted mb-2">{{ service.craftsman.get_service_category_display }}</p>
+                            <div class="rating mb-2">
+                                {% with rating=service.craftsman.rating|default:0 %}
+                                {% for i in "12345" %}
+                                    <i class="bi bi-star{% if i|add:0 <= rating %}fill text-warning{% else %} text-muted{% endif %}"></i>
+                                {% endfor %}
+                                <span class="text-muted ms-1">({{ rating }})</span>
+                                {% endwith %}
+                            </div>
+                            <small class="text-muted">Member since {{ service.craftsman.created_at|date:"M Y" }}</small>
+                        </div>
+            
+                        <!-- Craftsman Contact Info -->
+                        <div class="craftsman-contact mb-4">
+                            <div class="contact-item d-flex align-items-center mb-2">
+                                <i class="bi bi-telephone text-primary me-3"></i>
+                                <span>{{ service.craftsman.phone }}</span>
+                            </div>
+                            <div class="contact-item d-flex align-items-center mb-2">
+                                <i class="bi bi-geo-alt text-primary me-3"></i>
+                                <span>{{ service.craftsman.city }}, {{ service.craftsman.state }}</span>
+                            </div>
+                            <div class="contact-item d-flex align-items-center mb-2">
+                                <i class="bi bi-award text-primary me-3"></i>
+                                <span>{{ service.craftsman.get_years_of_experience_display }} experience</span>
+                            </div>
+                            {% if service.craftsman.license_number %}
+                            <div class="contact-item d-flex align-items-center mb-2">
+                                <i class="bi bi-file-earmark-check text-primary me-3"></i>
+                                <span>License #{{ service.craftsman.license_number }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+            
+                        <!-- Craftsman Description -->
+                        {% if service.craftsman.description %}
+                        <div class="craftsman-description mb-4">
+                            <h6 class="mb-2">About the Craftsman</h6>
+                            <p class="text-muted small">{{ service.craftsman.description|truncatewords:30 }}</p>
+                        </div>
+                        {% endif %}
+            
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <a href="tel:{{ service.craftsman.phone }}" class="btn btn-primary w-100 mb-2">
+                                <i class="bi bi-telephone me-2"></i>Call Now
+                            </a>
+                            <button class="btn btn-outline-primary w-100 mb-2" onclick="showMessageModal()">
+                                <i class="bi bi-chat me-2"></i>Send Message
+                            </button>
+                                                        <!-- Replace the existing save button with this -->
+                            <form method="POST" action="{% url 'save_service' service.id %}" class="d-inline w-100">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-secondary w-100">
+                                    <i class="bi bi-heart me-2"></i>Save Service
+                                </button>
+                            </form>
+                            <button class="btn btn-outline-info w-100" onclick="showShareModal(event, '{{ service.id }}', '{{ service.title|escapejs }}')">
+                                <i class="bi bi-share me-2"></i>Share Service
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share Modal -->
+<div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Share This Service</h3>
+            <span class="close-modal" onclick="closeShareModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="share-options">
+                <div class="share-option" onclick="shareOnFacebook()">
+                    <div class="share-icon facebook">
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                    <span>Facebook</span>
+                </div>
+                
+                <div class="share-option" onclick="shareOnTwitter()">
+                    <div class="share-icon twitter">
+                        <i class="bi bi-twitter"></i>
+                    </div>
+                    <span>Twitter</span>
+                </div>
+                
+                <div class="share-option" onclick="shareOnInstagram()">
+                    <div class="share-icon instagram">
+                        <i class="bi bi-instagram"></i>
+                    </div>
+                    <span>Instagram</span>
+                </div>
+                
+                <div class="share-option" onclick="copyShareLink()">
+                    <div class="share-icon link">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+                    <span>Copy Link</span>
+                </div>
+            </div>
+            
+            <div class="share-link-container mt-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="shareLink" readonly>
+                    <button class="btn btn-outline-secondary" type="button" onclick="copyShareLink()">
+                        <i class="bi bi-clipboard"></i>
+                    </button>
+                </div>
+                <small class="text-muted mt-1 d-block">Share this link with others</small>
+            </div>
+        </div>
+    </div>
+</div>
+            
+                <!-- Booking Card -->
+                <div class="booking-card card border-0 shadow-sm mt-4">
+                    <div class="card-body">
+                        <h6 class="card-title mb-3">Book This Service</h6>
+                        <div class="booking-price mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Service Fee:</span>
+                                <strong class="text-primary">
+                                    {% if service.price_type == 'hourly' %}
+                                        ${{ service.hourly_rate }}/hour
+                                    {% else %}
+                                        ${{ service.fixed_price }}
+                                    {% endif %}
+                                </strong>
+                            </div>
+                            {% if service.travel_fee %}
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Travel Fee:</span>
+                                <strong class="text-muted">${{ service.travel_fee }}</strong>
+                            </div>
+                            {% endif %}
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong>Total Estimate:</strong>
+                                <strong class="text-success">
+                                    {% if service.price_type == 'hourly' %}
+                                        Starting at ${{ service.hourly_rate }}/hour
+                                    {% else %}
+                                        ${{ service.fixed_price }}
+                                    {% endif %}
+                                </strong>
+                            </div>
+                        </div>
+                        <button class="btn btn-success w-100 py-3 fw-bold" onclick="showBookingModal()">
+                            <i class="bi bi-calendar-check me-2"></i>Book Appointment
+                        </button>
+                        <small class="text-muted d-block text-center mt-2">No upfront payment required</small>
+                    </div>
+                </div>
+            
+                <!-- Safety Tips -->
+                <div class="safety-tips card border-0 shadow-sm mt-4">
+                    <div class="card-body">
+                        <h6 class="card-title mb-3">
+                            <i class="bi bi-shield-check text-success me-2"></i>Safety Tips
+                        </h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Always meet in public first
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Check craftsman's ratings and reviews
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Don't pay large amounts upfront
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success me-2"></i>
+                                Get a written agreement for large jobs
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Related Services -->
+        {% if related_services %}
+        <div class="related-services mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="mb-4">Related Services</h3>
+                    <div class="row g-4">
+                        {% for related_service in related_services %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card h-100 border-0 shadow-sm service-card">
+                                <a href="{% url 'service_detail' related_service.id %}">
+                                    {% if related_service.image %}
+                                        <img src="{{ related_service.image.url }}" class="card-img-top" alt="{{ related_service.title }}" style="height: 200px; object-fit: cover;">
+                                    {% else %}
+                                        <img src="{% static 'assets/img/default-service.jpg' %}" class="card-img-top" alt="Default service" style="height: 200px; object-fit: cover;">
+                                    {% endif %}
+                                </a>
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <a href="{% url 'service_detail' related_service.id %}" class="text-decoration-none text-dark">
+                                            {{ related_service.title|truncatewords:6 }}
+                                        </a>
+                                    </h6>
+                                    <div class="card-text">
+                                        <div class="text-primary fw-bold mb-2">
+                                            {% if related_service.price_type == 'hourly' %}
+                                                ${{ related_service.hourly_rate }}/hour
+                                            {% else %}
+                                                ${{ related_service.fixed_price }}
+                                            {% endif %}
+                                        </div>
+                                        <small class="text-muted">{{ related_service.craftsman.business_name }}</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            {{ related_service.craftsman.rating|default:"4.5" }}
+                                        </small>
+                                        <span class="badge bg-primary">{{ related_service.get_category_display }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    
+
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+   
+
+   
+
+  </footer>
+
+ 
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+ 
+  <div id="preloader"></div>
+
+  <script>
+    function changeMainImage(thumb) {
+        const mainImage = document.getElementById('mainImage');
+        mainImage.src = thumb.src;
+    }
+    
+    function showMessageModal() {
+        // Implement message modal functionality
+        alert('Message functionality will be implemented soon!');
+    }
+    
+    function toggleFavorite() {
+        // Implement favorite functionality
+        alert('Favorite functionality will be implemented soon!');
+    }
+    
+    function showBookingModal() {
+        // Implement booking modal functionality
+        alert('Booking functionality will be implemented soon!');
+    }
+    
+    // Add hover effects for service cards
+    document.addEventListener('DOMContentLoaded', function() {
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    });
+    // Share functionality
+let currentShareUrl = '';
+let currentShareTitle = '';
+
+function showShareModal(event, serviceId, serviceTitle) {
+    if (event) event.preventDefault();
+    
+    currentShareUrl = `${window.location.origin}{% url 'service_detail' 0 %}`.replace('/0/', `/${serviceId}/`);
+    currentShareTitle = serviceTitle || 'Check out this amazing service';
+    
+    // Update share link input
+    document.getElementById('shareLink').value = currentShareUrl;
+    
+    // Show modal
+    const modal = document.getElementById('shareModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeShareModal() {
+    const modal = document.getElementById('shareModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// Facebook Share
+function shareOnFacebook() {
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentShareUrl)}`;
+    openShareWindow(shareUrl, 'facebook-share');
+}
+
+// Twitter Share
+function shareOnTwitter() {
+    const text = `Check out "${currentShareTitle}" on our platform!`;
+    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentShareUrl)}`;
+    openShareWindow(shareUrl, 'twitter-share');
+}
+
+// Instagram (Note: Instagram doesn't have direct sharing API for web)
+function shareOnInstagram() {
+    // Since Instagram doesn't support direct web sharing, we'll copy the link and show instructions
+    copyToClipboard(currentShareUrl);
+    
+    // Show instructions
+    alert('Link copied! Open Instagram and paste this link in your story or post to share this service.\n\nYou can also share as a post by uploading a screenshot and including this link in your caption.');
+}
+
+// Copy Link
+function copyShareLink() {
+    copyToClipboard(currentShareUrl);
+    
+    // Show feedback
+    const copyBtn = document.querySelector('.share-option:nth-child(4)');
+    const originalText = copyBtn.querySelector('span').textContent;
+    copyBtn.querySelector('span').textContent = 'Copied!';
+    
+    setTimeout(() => {
+        copyBtn.querySelector('span').textContent = originalText;
+    }, 2000);
+}
+
+// Utility function to open share windows
+function openShareWindow(url, name) {
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+    
+    window.open(url, name, `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`);
+}
+
+// Utility function to copy to clipboard
+function copyToClipboard(text) {
+    // Try using the Clipboard API first
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Link copied to clipboard!');
+        }).catch(err => {
+            fallbackCopyToClipboard(text);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopyToClipboard(text);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showToast('Link copied to clipboard!');
+        }
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+        alert('Unable to copy link. Please copy it manually: ' + text);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Toast notification
+function showToast(message) {
+    // Remove existing toast
+    const existingToast = document.getElementById('shareToast');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.id = 'shareToast';
+    toast.innerHTML = `
+        <div class="toast-content">
+            <i class="bi bi-check-circle"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add toast styles
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #077f46;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Remove toast after 3 seconds
+    setTimeout(() => {
+        toast.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Add these animations to your CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .toast-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .toast-content i {
+        font-size: 1.2rem;
+    }
+`;
+document.head.appendChild(style);
+
+// Close modal when clicking outside
+document.getElementById('shareModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeShareModal();
+    }
+});
+
+// Close modal with escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeShareModal();
+    }
+});
+    </script>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

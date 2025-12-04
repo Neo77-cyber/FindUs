@@ -1,0 +1,1320 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>FindUs</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: HomeSpace
+  * Template URL: https://bootstrapmade.com/homespace-bootstrap-real-estate-template/
+  * Updated: Jul 05 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<style>
+     /* Dashboard Tabs Styles - Updated for <a> tags */
+.dashboard-tabs {
+    display: flex;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.dashboard-tabs .tab {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: block; /* Important for proper spacing */
+}
+
+.dashboard-tabs .tab i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.dashboard-tabs .tab.active {
+    color: #077f46;
+    border-bottom: 3px solid #077f46;
+    background-color: #e6f5ec;
+}
+
+.dashboard-tabs .tab:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+/* Profile Edit Mode Styles */
+.edit-mode-indicator {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-mode-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.edit-mode-actions .cancel-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  background: white;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.edit-mode-actions .cancel-btn:hover {
+  background: #f8d7da;
+}
+
+/* Profile Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.form-actions .cancel-btn,
+.form-actions .submit-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.form-actions .cancel-btn {
+  background: white;
+  border: 1px solid #6c757d;
+  color: #6c757d;
+}
+
+.form-actions .cancel-btn:hover {
+  background: #f8f9fa;
+}
+
+.form-actions .submit-btn {
+  background: #077f46;
+  color: white;
+}
+
+.form-actions .submit-btn:hover {
+  background: #066b3a;
+}
+
+/* Current Image Preview */
+.current-image-preview {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.current-image-preview p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  color: #495057;
+}
+
+.current-image-preview img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Warning Icon for Delete Modal */
+.warning-icon {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.warning-icon i {
+  font-size: 3rem;
+  color: #dc3545;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Hero Actions Enhancement */
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-actions .btn-danger {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.hero-actions .btn-danger:hover {
+  background: #c82333;
+  border-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-actions {
+      flex-direction: column;
+  }
+  
+  .form-actions .cancel-btn,
+  .form-actions .submit-btn {
+      width: 100%;
+      justify-content: center;
+  }
+  
+  .hero-actions {
+      flex-direction: column;
+  }
+  
+  .hero-actions .btn {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+/* Responsive Design - Unchanged */
+@media (max-width: 768px) {
+    .dashboard-tabs {
+        flex-direction: column;
+    }
+    
+    .dashboard-tabs .tab {
+        padding: 12px;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        text-align: left;
+        padding-left: 20px;
+    }
+    
+    .dashboard-tabs .tab.active {
+        border-bottom: none;
+        border-right: 3px solid #077f46;
+    }
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  opacity: 0;
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  animation: modalSlideIn 0.3s ease-out forwards;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes modalSlideIn {
+  from {
+      transform: scale(0.9);
+  }
+  to {
+      transform: scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-header h3::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: #077f46;
+  border-radius: 2px;
+}
+
+.close-modal {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #6c757d;
+  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+}
+
+.close-modal:hover {
+  color: #2c3e50;
+  background: #f8f9fa;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.warning-icon {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.warning-icon i {
+  font-size: 4rem;
+  color: #dc3545;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: pulseWarning 2s infinite;
+}
+
+@keyframes pulseWarning {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+}
+
+.modal-body p {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.modal-body .text-danger {
+  color: #dc3545 !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem;
+  background: #fff5f5;
+  border-radius: 8px;
+  border-left: 4px solid #dc3545;
+  text-align: left;
+}
+
+.modal-body .text-muted {
+  font-size: 0.95rem;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.5rem 1.5rem;
+  justify-content: flex-end;
+  border-top: 1px solid #f0f0f0;
+  background: #f8f9fa;
+}
+
+.cancel-btn {
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid #6c757d;
+  color: #6c757d;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cancel-btn:hover {
+  background: #6c757d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.delete-confirm-btn {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.delete-confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+  background: linear-gradient(135deg, #c82333, #a71e2a);
+}
+
+/* Service Delete Modal Specific Styles */
+#deleteModal .modal-content {
+  max-width: 420px;
+}
+
+#deleteModal .modal-body {
+  text-align: left;
+}
+
+#deleteModal .service-name {
+  color: #077f46;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* Profile Delete Modal Specific Styles */
+#deleteProfileModal .modal-content {
+  max-width: 500px;
+}
+
+#deleteProfileModal .warning-icon {
+  margin-bottom: 1rem;
+}
+
+#deleteProfileModal .modal-body p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+#deleteProfileModal #profileName {
+  color: #077f46;
+  font-weight: 700;
+}
+
+/* Modal Backdrop Click */
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal {
+      padding: 0.5rem;
+  }
+  
+  .modal-content {
+      max-width: 95%;
+      margin: 1rem;
+  }
+  
+  .modal-header {
+      padding: 1.25rem 1.25rem 0.75rem;
+  }
+  
+  .modal-header h3 {
+      font-size: 1.2rem;
+  }
+  
+  .modal-body {
+      padding: 1.5rem 1.25rem;
+  }
+  
+  .warning-icon i {
+      font-size: 3rem;
+  }
+  
+  .modal-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.25rem;
+  }
+  
+  .cancel-btn,
+  .delete-confirm-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem;
+  }
+  
+  .modal-body p {
+      font-size: 1rem;
+  }
+  
+  .modal-body .text-danger {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+      max-width: 100%;
+      margin: 0.5rem;
+      border-radius: 12px;
+  }
+  
+  .modal-header {
+      padding: 1rem 1rem 0.5rem;
+  }
+  
+  .modal-body {
+      padding: 1.25rem 1rem;
+  }
+  
+  .modal-actions {
+      padding: 1rem;
+  }
+}
+
+/* Modal Exit Animation */
+.modal.exiting {
+  animation: modalFadeOut 0.2s ease-in forwards;
+}
+
+@keyframes modalFadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+.modal-content.exiting {
+  animation: modalSlideOut 0.2s ease-in forwards;
+}
+
+@keyframes modalSlideOut {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(0.9);
+  }
+}
+
+/* Enhanced Close Button */
+.close-modal {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-modal::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.close-modal:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Focus States for Accessibility */
+.modal:focus-within {
+  outline: none;
+}
+
+.cancel-btn:focus,
+.delete-confirm-btn:focus,
+.close-modal:focus {
+  outline: 2px solid #077f46;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+      background: #2d3748;
+      color: #e2e8f0;
+  }
+  
+  .modal-header {
+      background: linear-gradient(135deg, #2d3748, #4a5568);
+      border-bottom-color: #4a5568;
+  }
+  
+  .modal-header h3 {
+      color: #e2e8f0;
+  }
+  
+  .modal-body p {
+      color: #e2e8f0;
+  }
+  
+  .modal-body .text-muted {
+      color: #a0aec0;
+  }
+  
+  .modal-actions {
+      background: #4a5568;
+      border-top-color: #4a5568;
+  }
+  
+  .cancel-btn {
+      background: #4a5568;
+      border-color: #718096;
+      color: #e2e8f0;
+  }
+  
+  .cancel-btn:hover {
+      background: #718096;
+  }
+}
+</style>
+
+<body class="agent-profile-page">
+
+  
+
+  <main class="main">
+
+    <div class="dashboard-tabs">
+        <a href="{% url 'craftsman_profile' %}" class="tab active">
+            <i class="bi bi-person-circle"></i> My Profile
+        </a>
+        
+        <a href="{% url 'craftsman_dashboard' %}" class="tab">
+            <i class="bi bi-tools"></i> Services
+        </a>
+        
+        <a href="{% url 'craftsman_ad_boost' %}" class="tab">
+            <i class="bi bi-rocket"></i> Boost My Ads
+        </a>
+    </div>
+
+    <!-- Agent Profile Section -->
+<section id="agent-profile" class="agent-profile section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+    {% if not profile_complete %}
+      <!-- Profile Creation Form -->
+      <div class="contact-form-section" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="contact-form-wrapper">
+              <h3 class="text-center mb-4">Complete Your Service Profile</h3>
+              <p class="text-center mb-4">Fill in these details to start getting clients.</p>
+              {% if messages %}
+                <div class="alert-messages">
+                  {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                  </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                  {% for err in form.non_field_errors %}
+                    <div>{{ err }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+      
+              <form method="POST" id="craftsman-form" enctype="multipart/form-data" action="{% url 'craftsman_profile' %}">
+                {% csrf_token %}
+                
+                <!-- Row 1 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="business-name" class="form-label">Business Name*</label>
+                    <input type="text" name="business_name" class="form-control" id="business-name" required
+                           value="{{ form.business_name.value|default:'' }}">
+                    {% if form.business_name.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.business_name.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="service-category" class="form-label">Service Category*</label>
+                    <select name="service_category" class="form-control" id="service-category" required>
+                      <option value="">Select Service</option>
+                      <option value="plumbing" {% if form.service_category.value == 'plumbing' %}selected{% endif %}>Plumbing</option>
+                      <option value="electrical" {% if form.service_category.value == 'electrical' %}selected{% endif %}>Electrical</option>
+                      <option value="cleaning" {% if form.service_category.value == 'cleaning' %}selected{% endif %}>Cleaning</option>
+                      <option value="landscaping" {% if form.service_category.value == 'landscaping' %}selected{% endif %}>Landscaping</option>
+                      <!-- Add other categories as needed -->
+                    </select>
+                    {% if form.service_category.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.service_category.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Row 2 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="services" class="form-label">Services Offered*</label>
+                    <input type="text" name="services_offered" class="form-control" id="services" required 
+                           placeholder="e.g., Pipe repair, Drain cleaning"
+                           value="{{ form.services_offered.value|default:'' }}">
+                    {% if form.services_offered.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.services_offered.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="service-area" class="form-label">Service Area*</label>
+                    <input type="text" name="service_area" class="form-control" id="service-area" required 
+                           placeholder="e.g., Miami, FL"
+                           value="{{ form.service_area.value|default:'' }}">
+                    {% if form.service_area.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.service_area.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Row 3 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Phone Number*</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" required
+                           value="{{ form.phone.value|default:'' }}">
+                    {% if form.phone.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.phone.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="experience" class="form-label">Years of Experience</label>
+                    <select name="years_of_experience" class="form-control" id="experience">
+                      <option value="0-1" {% if form.years_of_experience.value == '0-1' %}selected{% endif %}>0-1 years</option>
+                      <option value="1-3" {% if form.years_of_experience.value == '1-3' %}selected{% endif %}>1-3 years</option>
+                      <option value="3-5" {% if form.years_of_experience.value == '3-5' %}selected{% endif %}>3-5 years</option>
+                      <option value="5+" {% if form.years_of_experience.value == '5+' %}selected{% endif %}>5+ years</option>
+                    </select>
+                    {% if form.years_of_experience.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.years_of_experience.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Single Row Upload -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="profile-photo" class="form-label">Profile Photo</label>
+                    <input type="file" name="profile_photo" class="form-control" id="profile-photo" accept="image/*">
+                    {% if form.profile_photo.value %}
+                      <small>Current: {{ form.profile_photo.value }}</small>
+                    {% endif %}
+                    <div class="current-image-preview" id="profile-photo-preview-wrapper" style="display:none;">
+                      <p>Preview:</p>
+                      <img id="profile-photo-preview" alt="Profile preview">
+                    </div>
+                    {% if form.profile_photo.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.profile_photo.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="license" class="form-label">License # (Optional)</label>
+                    <input type="text" name="license_number" class="form-control" id="license"
+                           value="{{ form.license_number.value|default:'' }}">
+                    {% if form.license_number.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.license_number.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Text Area -->
+                <div class="mb-3">
+                  <label for="description" class="form-label">Service Description</label>
+                  <textarea name="description" class="form-control" id="description" rows="5"
+                            placeholder="Describe your services and expertise...">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+                  {% if form.description.errors %}
+                    <div class="text-danger small mt-1">
+                      {% for err in form.description.errors %}<div>{{ err }}</div>{% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+      
+                <!-- Verification Checkbox -->
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="verification" required>
+                  <label class="form-check-label" for="verification">I agree to background verification</label>
+                </div>
+      
+                <div class="text-center">
+                  <input type="submit" value="Save Profile" class="btn btn-primary btn-lg">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% else %}
+    <!-- Profile Display with Edit Mode Toggle -->
+    {% if request.GET.edit %}
+      <!-- Edit Profile Form -->
+      <div class="contact-form-section" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="contact-form-wrapper">
+              <div class="edit-mode-indicator">
+                <i class="bi bi-pencil-square"></i>
+                <div>
+                  <strong>Editing Profile:</strong> {{ craftsman.business_name }}
+                  <div class="edit-mode-actions">
+                    <a href="{% url 'craftsman_profile' %}" class="cancel-btn">
+                      <i class="bi bi-x-circle"></i> Cancel Edit
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <h3 class="text-center mb-4">Edit Your Profile</h3>
+              
+              {% if messages %}
+                <div class="alert-messages">
+                  {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                  </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                  {% for err in form.non_field_errors %}
+                    <div>{{ err }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+      
+              <form method="POST" id="craftsman-form" enctype="multipart/form-data" action="{% url 'craftsman_profile' %}">
+                {% csrf_token %}
+                
+                <!-- Row 1 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="business-name" class="form-label">Business Name*</label>
+                    <input type="text" name="business_name" class="form-control" id="business-name" required
+                           value="{{ form.business_name.value|default:'' }}">
+                    {% if form.business_name.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.business_name.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="service-category" class="form-label">Service Category*</label>
+                    <select name="service_category" class="form-control" id="service-category" required>
+                      <option value="">Select Service</option>
+                      <option value="plumbing" {% if form.service_category.value == 'plumbing' %}selected{% endif %}>Plumbing</option>
+                      <option value="electrical" {% if form.service_category.value == 'electrical' %}selected{% endif %}>Electrical</option>
+                      <option value="cleaning" {% if form.service_category.value == 'cleaning' %}selected{% endif %}>Cleaning</option>
+                      <option value="landscaping" {% if form.service_category.value == 'landscaping' %}selected{% endif %}>Landscaping</option>
+                      <!-- Add other categories as needed -->
+                    </select>
+                    {% if form.service_category.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.service_category.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Row 2 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="services" class="form-label">Services Offered*</label>
+                    <input type="text" name="services_offered" class="form-control" id="services" required 
+                           placeholder="e.g., Pipe repair, Drain cleaning"
+                           value="{{ form.services_offered.value|default:'' }}">
+                    {% if form.services_offered.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.services_offered.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="service-area" class="form-label">Service Area*</label>
+                    <input type="text" name="service_area" class="form-control" id="service-area" required 
+                           placeholder="e.g., Miami, FL"
+                           value="{{ form.service_area.value|default:'' }}">
+                    {% if form.service_area.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.service_area.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Row 3 -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Phone Number*</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" required
+                           value="{{ form.phone.value|default:'' }}">
+                    {% if form.phone.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.phone.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="experience" class="form-label">Years of Experience</label>
+                    <select name="years_of_experience" class="form-control" id="experience">
+                      <option value="0-1" {% if form.years_of_experience.value == '0-1' %}selected{% endif %}>0-1 years</option>
+                      <option value="1-3" {% if form.years_of_experience.value == '1-3' %}selected{% endif %}>1-3 years</option>
+                      <option value="3-5" {% if form.years_of_experience.value == '3-5' %}selected{% endif %}>3-5 years</option>
+                      <option value="5+" {% if form.years_of_experience.value == '5+' %}selected{% endif %}>5+ years</option>
+                    </select>
+                    {% if form.years_of_experience.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.years_of_experience.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Single Row Upload -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="profile-photo" class="form-label">Profile Photo</label>
+                    <input type="file" name="profile_photo" class="form-control" id="profile-photo" accept="image/*">
+                    {% if craftsman.profile_photo %}
+                      <div class="current-image-preview">
+                        <p>Current Photo:</p>
+                        <img src="{{ craftsman.profile_photo.url }}" alt="Current profile photo" style="max-width: 150px; max-height: 150px; border-radius: 8px;">
+                      </div>
+                    {% endif %}
+                    <div class="current-image-preview" id="profile-photo-preview-wrapper" style="display:none;">
+                      <p>Preview:</p>
+                      <img id="profile-photo-preview" alt="Profile preview">
+                    </div>
+                    {% if form.profile_photo.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.profile_photo.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="license" class="form-label">License # (Optional)</label>
+                    <input type="text" name="license_number" class="form-control" id="license"
+                           value="{{ form.license_number.value|default:'' }}">
+                    {% if form.license_number.errors %}
+                      <div class="text-danger small mt-1">
+                        {% for err in form.license_number.errors %}<div>{{ err }}</div>{% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+      
+                <!-- Text Area -->
+                <div class="mb-3">
+                  <label for="description" class="form-label">Service Description</label>
+                  <textarea name="description" class="form-control" id="description" rows="5"
+                            placeholder="Describe your services and expertise...">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+                  {% if form.description.errors %}
+                    <div class="text-danger small mt-1">
+                      {% for err in form.description.errors %}<div>{{ err }}</div>{% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+      
+                <div class="form-actions">
+                  <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'craftsman_profile' %}'">
+                    <i class="bi bi-x-circle"></i> Cancel
+                  </button>
+                  <button type="submit" class="submit-btn">
+                    <i class="bi bi-check-circle"></i> Update Profile
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% else %}
+      <!-- Profile Display View -->
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-4" data-aos="fade-right" data-aos-delay="150">
+          <div class="agent-photo-wrapper">
+            {% if craftsman.profile_photo %}
+              <img src="{{ craftsman.profile_photo.url }}" alt="{{ craftsman.business_name }}" class="img-fluid agent-photo">
+            {% else %}
+              <img src="{% static 'assets/img/real-estate/agent-3.webp' %}" alt="Agent Profile" class="img-fluid agent-photo">
+            {% endif %}
+            {% if craftsman.is_verified %}
+              <div class="agent-badge">
+                <i class="bi bi-star-fill"></i>
+                <span>Verified</span>
+              </div>
+            {% endif %}
+          </div>
+          
+          <!-- Rating Section -->
+          <div class="rating-section mt-3">
+            <div class="stars">
+              {% for i in "12345" %}
+                <i class="bi bi-star{% if i|add:0 <= craftsman.rating|add:0 %}fill{% endif %}"></i>
+              {% endfor %}
+              <span>({{ craftsman.rating|floatformat:1 }})</span>
+            </div>
+            <small>Member since {{ craftsman.created_at|date:"M Y" }}</small>
+          </div>
+        </div>
+        
+        <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
+          <div class="agent-info">
+            <h1 class="agent-name">{{ craftsman.business_name }}</h1>
+            <p class="agent-title">{{ craftsman.get_service_category_display }}</p>
+            <p class="agent-tagline">"{{ craftsman.description }}"</p>
+      
+            <div class="contact-info-hero">
+              <!-- Phone -->
+              <div class="contact-item">
+                <i class="bi bi-telephone-fill"></i>
+                <span>{{ craftsman.phone }}</span>
+              </div>
+              
+              <!-- Service Area -->
+              <div class="contact-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Serving {{ craftsman.service_area }}</span>
+              </div>
+              
+              <!-- Experience -->
+              <div class="contact-item">
+                <i class="bi bi-award-fill"></i>
+                <span>{{ craftsman.get_years_of_experience_display }} experience</span>
+              </div>
+              
+              <!-- License -->
+              {% if craftsman.license_number %}
+                <div class="contact-item">
+                  <i class="bi bi-file-earmark-check-fill"></i>
+                  <span>License #{{ craftsman.license_number }}</span>
+                </div>
+              {% endif %}
+              
+              <!-- Address -->
+              <div class="contact-item">
+                <i class="bi bi-house-fill"></i>
+                <span>
+                  {{ craftsman.address }}, 
+                  {{ craftsman.city }}, 
+                  {{ craftsman.state }} 
+                  {{ craftsman.postal_code }}
+                </span>
+              </div>
+            </div>
+      
+            <div class="services-section mt-4">
+              <h5>Services Offered:</h5>
+              <div class="services-list">
+                {{ craftsman.services_offered }}
+              </div>
+            </div>
+      
+            <div class="hero-actions mt-4">
+              <a href="?edit=true" class="btn btn-primary">
+                <i class="bi bi-pencil"></i> Edit Profile
+              </a>
+              <a href="{% url 'change_password' %}" class="btn btn-primary">
+                <i class="bi bi-pencil"></i> Change Password
+              </a>
+              <a href="{% url 'craftsman_dashboard' %}" class="btn btn-outline">View My Services</a>
+              <button class="btn btn-danger" onclick="confirmDeleteProfile('{{ craftsman.business_name|escapejs }}')">
+                <i class="bi bi-trash"></i> Delete Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% endif %}
+
+  </div>
+</section><!-- /Agent Profile Section -->
+
+<!-- Delete Profile Confirmation Modal -->
+<div id="deleteProfileModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Delete Profile</h3>
+      <span class="close-modal" onclick="closeProfileModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="warning-icon">
+        <i class="bi bi-exclamation-triangle"></i>
+      </div>
+      <p>Are you sure you want to delete your profile "<strong id="profileName"></strong>"?</p>
+      <p class="text-danger"><strong>Warning:</strong> This action cannot be undone. All your services and profile data will be permanently deleted.</p>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeProfileModal()">Cancel</button>
+      <a href="?delete=true" id="confirmDeleteProfileBtn" class="delete-confirm-btn">
+        <i class="bi bi-trash"></i> Delete Profile
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+  </main>
+
+  
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <script>
+    function confirmDelete(serviceId, serviceTitle) {
+        const modal = document.getElementById('deleteModal');
+        const serviceName = document.getElementById('serviceName');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        
+        serviceName.textContent = serviceTitle;
+        confirmDeleteBtn.href = `?delete=${serviceId}`;
+        
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    function confirmDeleteProfile(profileName) {
+        const modal = document.getElementById('deleteProfileModal');
+        const profileNameElement = document.getElementById('profileName');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteProfileBtn');
+        
+        profileNameElement.textContent = profileName;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('exiting');
+        modal.querySelector('.modal-content').classList.add('exiting');
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('exiting');
+            modal.querySelector('.modal-content').classList.remove('exiting');
+            document.body.style.overflow = ''; // Restore scrolling
+        }, 200);
+    }
+    
+    function closeDeleteModal() {
+        closeModal('deleteModal');
+    }
+    
+    function closeProfileModal() {
+        closeModal('deleteProfileModal');
+    }
+    
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            closeModal(e.target.id);
+        }
+    });
+    
+    // Close modal with escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const openModals = document.querySelectorAll('.modal[style*="display: flex"]');
+            openModals.forEach(modal => {
+                closeModal(modal.id);
+            });
+        }
+    });
+    
+    // Close modal when clicking the X button
+    document.querySelectorAll('.close-modal').forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            closeModal(modal.id);
+        });
+    });
+    
+    // Focus management for accessibility
+    document.addEventListener('DOMContentLoaded', function() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('shown', function() {
+                const focusElement = this.querySelector('.delete-confirm-btn') || this.querySelector('.cancel-btn');
+                if (focusElement) focusElement.focus();
+            });
+        });
+    });
+    </script>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script>
+    (function() {
+      const fileInput = document.getElementById('profile-photo');
+      const previewWrapper = document.getElementById('profile-photo-preview-wrapper');
+      const previewImg = document.getElementById('profile-photo-preview');
+      if (!fileInput || !previewWrapper || !previewImg) return;
+      fileInput.addEventListener('change', function(e) {
+        const file = e.target.files && e.target.files[0];
+        if (!file) {
+          previewWrapper.style.display = 'none';
+          previewImg.removeAttribute('src');
+          previewImg.removeAttribute('alt');
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          previewImg.src = evt.target.result;
+          previewImg.alt = file.name;
+          previewWrapper.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

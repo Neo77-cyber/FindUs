@@ -1,0 +1,805 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Find Us</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: HomeSpace
+  * Template URL: https://bootstrapmade.com/homespace-bootstrap-real-estate-template/
+  * Updated: Jul 05 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="{% static 'assets/img/logo.webp' %}" alt=""> -->
+        <svg class="my-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="bgCarrier" stroke-width="0"></g>
+          <g id="tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="iconCarrier">
+            <path d="M22 22L2 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M2 11L6.06296 7.74968M22 11L13.8741 4.49931C12.7784 3.62279 11.2216 3.62279 10.1259 4.49931L9.34398 5.12486" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M15.5 5.5V3.5C15.5 3.22386 15.7239 3 16 3H18.5C18.7761 3 19 3.22386 19 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M4 22V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M20 9.5V13.5M20 22V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393M9 22V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M14 9.5C14 10.6046 13.1046 11.5 12 11.5C10.8954 11.5 10 10.6046 10 9.5C10 8.39543 10.8954 7.5 12 7.5C13.1046 7.5 14 8.39543 14 9.5Z" stroke="currentColor" stroke-width="1.5"></path>
+          </g>
+        </svg>
+        <h1 class="sitename">FindUs</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}" class="active">Home</a></li>
+          <li><a href="{% url 'register_craftsman' %}">Join as a Service Provider</a></li>
+          <li><a href="{% url 'signin' %}">Signin</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="hero-wrapper">
+              <div class="row g-4">
+                <div class="col-lg-7">
+                  <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="content-header">
+                      <style>
+                        .signup-choice-row {
+                          display: flex;
+                          flex-direction: row;  /* This makes it horizontal */
+                          gap: 20px;           /* Space between buttons */
+                          justify-content: left; /* Center the buttons */
+                          margin: 20px 0;
+                        }
+                        
+                        .signup-choice-btn {
+                          display: flex;
+                          align-items: center;
+                          padding: 12px 25px;
+                          background-color: #077f46;
+                          border: 1px solid #dee2e6;
+                          border-radius: 8px;
+                          text-decoration: none;
+                          color: #ffffff;
+                          font-weight: 500;
+                          transition: all 0.3s ease;
+                          white-space: nowrap; /* Prevents text wrapping */
+                        }
+                        
+                        .signup-choice-btn:hover {
+                          background-color: #e9ecef;
+                          transform: translateY(-2px);
+                        }
+                        
+                        .signup-choice-btn i {
+                          margin-left: 10px;
+                          font-size: 1rem;
+                        }
+                      </style>
+
+                      <div class="signup-choice-row">
+                        
+                        <a href="{% url 'signin' %}" class="signup-choice-btn">
+                          <span>Sign In</span>
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                        
+                        
+                        <a href="{% url 'register_craftsman' %}" class="signup-choice-btn">
+                          <span>Join as a Service Provider</span>
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                      <h1>Find Trusted Craftsmen Near You</h1>
+                      <p>Don’t waste time on stressful home repairs. We connect you with trusted professionals for plumbing, electrical work, HVAC, appliance repair, cleaning, furniture assembly, and more — fast, reliable, and fully vetted.</p>
+                    </div>
+          
+                    <div class="search-container" data-aos="fade-up" data-aos-delay="300">
+                      <div class="search-header">
+                        <h3>Register Now</h3>
+                        <p>Get started in just a few steps</p>
+                      </div>
+
+                      {% if messages %}
+                    <div class="alert-messages">
+                      {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }}">
+                      {{ message }}
+                      </div>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+          
+                    <form method="POST" class="property-search-form signup-form" action="{% url 'home' %}">
+                      {% csrf_token %}
+                      
+                      <div class="search-grid">
+                          <!-- Personal Info -->
+                          <div class="search-field">
+                              <label for="first-name" class="field-label">Username</label>
+                              {{ form.username }}
+                              <i class="bi bi-person field-icon"></i>
+                          </div>
+                          <div class="search-field">
+                              <label for="id_first_name" class="field-label">First Name</label>
+                              {{ form.first_name }}
+                              <i class="bi bi-person field-icon"></i>
+                          </div>
+                  
+                          <div class="search-field">
+                              <label for="last-name" class="field-label">Last Name</label>
+                              {{ form.last_name }}
+                              <i class="bi bi-person field-icon"></i>
+                          </div>
+                          <div class="search-field">
+                              <label for="email" class="field-label">Email</label>
+                              {{ form.email }}
+                              <i class="bi bi-envelope field-icon"></i>
+                          </div>
+                  
+                          
+                          <div class="search-field">
+                              <label for="password" class="field-label">Password</label>
+                              {{ form.password1 }}
+                              <i class="bi bi-lock field-icon"></i>
+                          </div>
+                  
+                          <div class="search-field">
+                              <label for="confirm-password" class="field-label">Confirm Password</label>
+                              {{ form.password2 }}
+                              <i class="bi bi-lock field-icon"></i>
+                          </div>
+                          <div class="search-field">
+                            <label for="phone" class="field-label">Phone Number</label>
+                            {{ form.phone }}
+                            <i class="bi bi-phone field-icon"></i>
+                        </div>
+                  
+                          <!-- Address Fields (without header) -->
+                          <div class="search-field">
+                              <label for="id_address" class="field-label">Address</label>
+                              {{ form.address }}
+                          </div>
+                          <div class="search-field">
+                              <label for="id_city" class="field-label">City</label>
+                              {{ form.city }}
+                          </div>
+                  
+                          <div class="search-field">
+                              <label for="id_state" class="field-label">State</label>
+                              {{ form.state }}
+                          </div>
+                          <div class="search-field">
+                              <label for="id_country" class="field-label">Country</label>
+                              {{ form.country }}
+                          </div>
+                  
+                          <div class="search-field">
+                              <label for="id_postal_code" class="field-label">Postal Code</label>
+                              {{ form.postal_code }}
+                          </div>
+                      </div>
+                  
+                      <div class="form-footer">
+                          <div class="form-check">
+                              <input type="checkbox" id="terms-agree" name="terms_agree" required>
+                              <label for="terms-agree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                          </div>
+                  
+                          <button type="submit" class="search-btn signup-btn">
+                              <i class="bi bi-person-plus"></i>
+                              <span>Create Account</span>
+                          </button>
+                  
+                          <p class="login-link">Already have an account? <a href="{% url 'signin' %}">Log in</a></p>
+                      </div>
+                  </form>
+                    </div>
+          
+                    
+                  </div>
+                </div><!-- End Hero Content -->
+          
+                <div class="col-lg-5">
+                  <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
+                    <div class="visual-container">
+                      <div class="featured-property">
+                        <img src="{% static 'assets/img/real-estate/app[w[q.webp' %}" alt="Featured Property" class="img-fluid">
+                        <div class="property-info">
+                          <div class="property-price">Why Find Us</div>
+                          <div class="property-details">
+                            <span><i class="bi bi-check-circle"></i> Hire trusted & vetted workers</span>
+                            <span><i class="bi bi-check-circle"></i> Save time</span>
+                            <span><i class="bi bi-check-circle"></i> Compare Service Rates</span>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="overlay-images">
+                        <div class="overlay-img overlay-1">
+                          <img src="{% static 'assets/img/real-estate/mn mn.png' %}" alt="Interior View" class="img-fluid">
+                        </div>
+                        <div class="overlay-img overlay-2">
+                          <img src="{% static 'assets/img/real-estate/a]]a[[pwolq,.webp' %}" alt="Exterior View" class="img-fluid">
+                        </div>
+                      </div>
+          
+                      <div class="testimonial-card">
+                        <div class="testimonial-content">
+                          <p>“I love this app! Got a HVAC tech near me in seconds to fix an age-long issue with my AC Unit. Smooth!! I totally recommend”</p>
+                          <style>
+                            .testimonial-author {
+                              display: flex;
+                              align-items: center;
+                              gap: 15px;
+                          }
+                          
+                          .author-photo-container {
+                              width: 60px;  /* Adjust size as needed */
+                              height: 60px; /* Must match width for perfect circle */
+                              border-radius: 50%;
+                              overflow: hidden;
+                              border: 2px solid #fff; /* Optional white border */
+                              box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional subtle shadow */
+                          }
+                          
+                          .author-photo {
+                              width: 100%;
+                              height: 100%;
+                              object-fit: cover; /* Ensures image fills circle without distortion */
+                          }
+                          
+                          .author-info h5 {
+                              margin-bottom: 5px;
+                              font-size: 1rem;
+                          }
+                          
+                          .author-info p {
+                              margin: 0;
+                              font-size: 0.8rem;
+                              color: #666;
+                          }
+                          </style>
+                          <div class="testimonial-author">
+                            <div class="author-photo-container">
+                                <img src="{% static 'assets/img/person/akkapwple.webp' %}" alt="Client" class="author-photo">
+                            </div>
+                            <div class="author-info">
+                                <h5>Emily R.</h5>
+                                <p>London, UK</p>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div><!-- End Hero Visual -->
+              </div>
+            </div>
+          </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Home About Section -->
+    <section id="home-about" class="home-about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
+            <div class="image-gallery">
+              <div class="primary-image">
+                <img src="{% static 'assets/img/real-estate/a]]w[wd.png' %}" alt="Modern Property" class="img-fluid">
+                <div class="experience-badge">
+                  <div class="badge-content">
+                    <div class="number"><span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>+</div>
+                    <div class="text">Years<br>Experience</div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
+            <div class="content">
+              <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2>Need Help? Get Help!
+                  Find Service Providers around you!</h2>
+              </div>
+              <h4>For Users</h4>
+
+              <p>Search for any domestic service, and we’ll find registered providers closest to you.
+
+                You pick one of the listed providers, and after they accept your service request, you can contact them to discuss further.
+                
+                Your assigned service provider arrives at your location, and gets your job done!</p>
+
+                <h4>For Providers</h4>
+
+              <p>Register on FindUs as a provider, and submit all required information and documents
+
+                FindUs would list you as a provider for the service you offer and users around you can request your service
+                
+                Accept users’ requests and proceed with completing their jobs and getting paid!</p>
+            
+
+              <div class="action-section">
+                <a href="{% url 'register_craftsman' %}" class="btn-cta">
+                  <span>Join as a Service Provider</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+                
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Home About Section -->
+
+    <!-- Featured Properties Section -->
+    <section id="featured-properties" class="featured-properties section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Featured services</h2>
+        <p> Need Help? Get Help! Find Service Providers around you!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-8">
+
+            <div class="featured-property-main" data-aos="zoom-in" data-aos-delay="200">
+              <div class="property-hero">
+                <img src="{% static 'assets/img/real-estate/papoeps.png' %}" alt="Luxury Estate" class="img-fluid">
+                <div class="property-overlay">
+                  <div class="property-badge-main premium">Premium</div>
+                  <div class="property-stats">
+                    <div class="stat-item">
+                      <i class="bi bi-lightning-charge"></i>
+                      <span>Speed</span>
+                    </div>
+                    <div class="stat-item">
+                      <i class="bi bi-shield-lock"></i>
+                      <span>Security</span>
+                    </div>
+                    <div class="stat-item">
+                      <i class="bi bi-headset"></i>
+                      <span>Support</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="property-hero-content">
+                <div class="property-header">
+                  <div class="property-info">
+                    <h2><a href="property-details.html"> Laptop Repair</a></h2>
+                    <div class="property-address">
+                      <i class="bi bi-geo-alt-fill"></i>
+                      <span>Available in your area</span>
+                    </div>
+                  </div>
+                  <div class="property-price-main">⭐ 4.8 / 5.0</div>
+                </div>
+                <p class="property-description">Expert laptop repair and technical support for every brand and model; from hardware replacements to software troubleshooting, we ensure your device runs smoothly, securely, and reliably.</p>
+                <div class="property-actions-main">
+                  <a href="{% url 'register_craftsman' %}" class="btn-primary-custom">Register</a>
+                  <a href="{% url 'signin' %}" class="btn-outline-custom">Book Now</a>
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4">
+
+            <div class="properties-sidebar">
+
+              <div class="sidebar-property-card" data-aos="fade-left" data-aos-delay="300">
+                <div class="sidebar-property-image">
+                  <img src="{% static 'assets/img/real-estate/a[[pww.png' %}" alt="Modern Condo" class="img-fluid">
+                  <div class="sidebar-property-badge hot">Hot Deal</div>
+                </div>
+                <div class="sidebar-property-content">
+                  <h4><a href="property-details.html">Plumbling</a></h4>
+                  <div class="sidebar-location">
+                    <i class="bi bi-pin-map"></i>
+                    <span>Available in your area</span>
+                  </div>
+                  <div class="sidebar-specs">
+                    <span><i class="bi bi-check-circle"></i> Reliability</span>
+                    <span><i class="bi bi-shield-lock"></i> Safety</span>
+                    <span><i class="bi bi-gear"></i> Efficiency</span>
+                  </div>
+                  <div class="sidebar-price-row">
+                    <div class="sidebar-price"> ⭐ 4.6 / 5.0</div>
+                    <a href="{% url 'signin' %}" class="sidebar-btn">View</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sidebar-property-card" data-aos="fade-left" data-aos-delay="400">
+                <div class="sidebar-property-image">
+                  <img src="{% static 'assets/img/real-estate/appoepwlx.png' %}" alt="Family Home" class="img-fluid">
+                  <div class="sidebar-property-badge new">New Listing</div>
+                </div>
+                <div class="sidebar-property-content">
+                  <h4><a href="property-details.html">Cleaning</a></h4>
+                  <div class="sidebar-location">
+                    <i class="bi bi-pin-map"></i>
+                    <span>Available in your area</span>
+                  </div>
+                  <div class="sidebar-specs">
+                    <span><i class="bi bi-stars"></i> Freshness</span>
+                    <span><i class="bi bi-droplet"></i> Hygiene</span>
+                    <span><i class="bi bi-house-heart"></i>Comfort</span>
+                  </div>
+                  <div class="sidebar-price-row">
+                    <div class="sidebar-price"> ⭐ 4.7 / 5.0</div>
+                    <a href="{% url 'signin' %}" class="sidebar-btn">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row gy-4 mt-4">
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="property-card-horizontal">
+              <div class="property-image-horizontal">
+                <img src="{% static 'assets/img/real-estate/apapopq.webp' %}" alt="Penthouse" class="img-fluid">
+                <div class="property-badge-horizontal exclusive">Exclusive</div>
+              </div>
+              <div class="property-content-horizontal">
+                <h3><a href="property-details.html">Painting</a></h3>
+                <div class="property-location-horizontal">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Available in your area</span>
+                </div>
+                <div class="property-features">
+                  <span class="feature"><i class="bi bi-brush"></i> Precision</span>
+                  <span class="feature"><i class="bi bi-hammer"></i> Durability</span>
+                  <span class="feature"><i class="bi bi-palette"></i> Style</span>
+                </div>
+                <p>Interior and exterior painting solutions with precision and style. We bring vibrant colors and lasting finishes to any space.</p>
+                <div class="property-footer-horizontal">
+                  <div class="property-price-horizontal">⭐ 4.9 / 5.0</div>
+                  <a href="{% url 'signin' %}" class="btn-view-horizontal">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="property-card-horizontal">
+              <div class="property-image-horizontal">
+                <img src="{% static 'assets/img/real-estate/appa[q[[qld.webp' %}" alt="Modern Home" class="img-fluid">
+                <div class="property-badge-horizontal new">New</div>
+              </div>
+              <div class="property-content-horizontal">
+                <h3><a href="property-details.html">Carpentry</a></h3>
+                <div class="property-location-horizontal">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Available in your area</span>
+                </div>
+                <div class="property-features">
+                  <span class="feature"><i class="bi bi-tools"></i> Craft</span>
+                  <span class="feature"><i class="bi bi-box-seam"></i> Function</span>
+                  <span class="feature"><i class="bi bi-grid-3x3-gap"></i> Design</span>
+                </div>
+                <p>Custom carpentry and woodwork designed to fit your lifestyle. From furniture to renovations, quality craftsmanship guaranteed.</p>
+                <div class="property-footer-horizontal">
+                  <div class="property-price-horizontal">⭐ 4.9 / 5.0</div>
+                  <a href="{% url 'signin' %}" class="btn-view-horizontal">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Properties Section -->
+
+    
+
+   
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>What the people are saying about FindUs</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="testimonial-grid">
+
+          <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="100">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-image">
+                  <img src="{% static 'assets/img/person/a]]w[eopwq.webp' %}" class="img-fluid" alt="Testimonial 1">
+                </div>
+                <div class="testimonial-meta">
+                  <h3>Laura M.</h3>
+                  <h4>Berlin, Germany</h4>
+                  <div class="company-logo">
+                    <i class="bi bi-building"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-body">
+                <i class="bi bi-chat-quote-fill quote-icon"></i>
+                <p>I just moved into a new apartment and had no idea how to assemble all the flat-pack furniture. Found a handyman near me who handled everything in a single visit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item featured" data-aos="zoom-in" data-aos-delay="200">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-image">
+                  <img src="{% static 'assets/img/person/a]]a[[wwl.webp' %}" class="img-fluid" alt="Testimonial 2">
+                </div>
+                <div class="testimonial-meta">
+                  <h3>Rachel W.</h3>
+                  <h4>Toronto, Canada</h4>
+                  <div class="company-logo">
+                    <i class="bi bi-buildings"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-body">
+                <i class="bi bi-chat-quote-fill quote-icon"></i>
+                <p>I signed up as a plumber and started receiving requests the next day. I highly recommend.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="300">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-image">
+                  <img src="{% static 'assets/img/person/newone.webp' %}" class="img-fluid" alt="Testimonial 3">
+                </div>
+                <div class="testimonial-meta">
+                  <h3>Jessica L</h3>
+                  <h4>Brooklyn, NY</h4>
+                  <div class="company-logo">
+                    <i class="bi bi-building-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-body">
+                <i class="bi bi-chat-quote-fill quote-icon"></i>
+                <p>I booked a deep cleaning service before guests arrived, and they were absolutely fantastic. They were on time, polite, and left the place spotless. I’m definitely using this service again.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="400">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-image">
+                  <img src="{% static 'assets/img/person/manimage.webp' %}" class="img-fluid" alt="Testimonial 4">
+                </div>
+                <div class="testimonial-meta">
+                  <h3>Mark T</h3>
+                  <h4>Manchester, UK</h4>
+                  <div class="company-logo">
+                    <i class="bi bi-building-gear"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-body">
+                <i class="bi bi-chat-quote-fill quote-icon"></i>
+                <p>I had a leaking pipe under my kitchen sink. Found a plumber in under 15 minutes and he was at my door within the hour.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+   
+
+    
+
+    <!-- Recent Blog Posts Section -->
+    <section id="recent-blog-posts" class="recent-blog-posts section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Recent Blog Posts</h2>
+        <p>Explore our latest articles packed with expert tips, guides, and insights.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+            <article class="featured-post">
+              <div class="featured-img">
+                <img src="{% static 'assets/img/blog/Untitled design.webp' %}" alt="" class="img-fluid" loading="lazy">
+                <div class="featured-badge">Featured</div>
+              </div>
+
+              <div class="featured-content">
+                <div class="post-header">
+                  <a href="#" class="category">Technology</a>
+                  <span class="post-date">Dec 18, 2024</span>
+                </div>
+
+                <h2 class="post-title">
+                  <a href="#">The Best App to Find Cleaners, Plumbers, and Electricians Near You</a>
+                </h2>
+
+                <p class="post-excerpt">
+                  Searching for home service professionals nearby? Our platform helps you find and hire cleaners, electricians, and plumbers in your area — fast, safe, and affordable.
+                </p>
+
+                <div class="post-footer">
+                  <div class="author-info">
+                    
+                    <div class="author-details">
+                      <span class="author-name">Rob Monroe</span>
+                      <span class="read-time">Dec 12, 2016</span>
+                    </div>
+                  </div>
+                  <a href="#" class="read-more">Read More</a>
+                </div>
+              </div>
+            </article>
+
+            
+          </div><!-- End featured post -->
+
+          <div class="col-lg-4">
+
+            <article class="recent-post" data-aos="fade-up" data-aos-delay="200">
+              <div class="recent-img">
+                <img src="{% static 'assets/img/blog/qqooapks.webp' %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+              <div class="recent-content">
+                <a href="#" class="category">Discovery</a>
+                <h3 class="recent-title">
+                  <a href="#">The Future of Hiring: Instantly Book Verified Local Experts from Anywhere</a>
+                </h3>
+                <div class="recent-meta">
+                  <span class="author">By Rob Monroe</span>
+                  <span class="date">Dec 15, 2024</span>
+                </div>
+              </div>
+            </article><!-- End recent post -->
+
+            <article class="recent-post" data-aos="fade-up" data-aos-delay="250">
+              <div class="recent-img">
+                <img src="{% static 'assets/img/blog/qqqopadzzm.webp' %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+              <div class="recent-content">
+                <a href="#" class="category">Tips & Advice</a>
+                <h3 class="recent-title">
+                  <a href="#">5 Red Flags to Avoid When Hiring Local Services"</a>
+                </h3>
+                <div class="recent-meta">
+                  <span class="author">By Rob Monroe</span>
+                  <span class="date">Jan 25, 2024</span>
+                </div>
+              </div>
+            </article><!-- End recent post -->
+
+            
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Recent Blog Posts Section -->
+
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+    
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Find Us</strong> <span>All Rights Reserved</span></p>
+      <div class="social-links-wrapper d-flex justify-content-center mt-4">
+        <div class="social-links d-flex">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+      
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
