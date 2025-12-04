@@ -29,9 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1', 
-    '.ngrok-free.dev',
-    '.ngrok.io',
-    'subattenuated-postganglionic-barrett.ngrok-free.dev',
+    
 ]
 
 
@@ -55,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'handyman_project.urls'
@@ -119,19 +118,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Allow ngrok domains
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.ngrok.io',
-    '.ngrok-free.app',
-]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.ngrok-free.dev',
-    'https://*.ngrok.io',
-    'https://subattenuated-postganglionic-barrett.ngrok-free.dev',
-]
 
 
 
